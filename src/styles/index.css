@@ -1,13 +1,28 @@
-:root {
-  --color-main: #333;
-}
-
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
-
-body {
-  color: var(--color-main);
+.game {
+  max-width: 600px;
+  margin: 5% auto;
+}
+.grid {
+  border: thin solid gray;
+  line-height: 0;
+}
+.cell {
+  border: thin solid gray;
+  display: inline-block;
+  height: 80px;
+  max-height: 15vh;
+}
+.message {
+  float: left;
+  color: #666;
+  margin-top: 1rem;
+}
+.button {
+  float: right;
+  margin-top: 1rem;
 }
