@@ -20,6 +20,7 @@ const GameSession: FunctionComponent = ({
   const [pickedCellIds, setPickedCellIds] = useState([]);
   const [countdownSeconds, setCountdownSeconds] = useState(playSeconds);
 
+  // Timer effects
   useEffect(() => {
     if (gameStatus === GameStatus.CHALLENGE) {
       const timerId = setTimeout(
@@ -43,6 +44,7 @@ const GameSession: FunctionComponent = ({
     }
   }, [challengeSeconds, gameStatus]);
 
+  // Check if game is won or lost.
   useEffect(() => {
     const [correctPicks, wrongPicks] = utils.arrayCrossCounts(
       pickedCellIds,
@@ -56,9 +58,9 @@ const GameSession: FunctionComponent = ({
     }
   }, [pickedCellIds, challengeCellIds, maxWrongAttempts]);
 
+  // Handler when a cell is picked
   const pickCell = (cellId) => {
     if (gameStatus === GameStatus.PLAYING) {
-      console.log('pickCell', cellId);
       setPickedCellIds((pickedCellIds: number[]) => {
         if (pickedCellIds.includes(cellId)) {
           return pickedCellIds;
