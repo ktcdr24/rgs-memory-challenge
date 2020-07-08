@@ -173,9 +173,9 @@ const GameSession: FunctionComponent = ({
 
 const GameGenerator: FunctionComponent = () => {
   const [gameId, setGameId] = useState(1);
-  const rows = 3;
-  const cols = 3;
-  const challengeSize = 5;
+  const rows = 6;
+  const cols = 6;
+  const challengeSize = 10;
   const challengeSeconds = 3;
   const maxWrongAttempts = 3;
   const playSeconds = 10;
