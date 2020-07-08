@@ -1,5 +1,5 @@
 import React from 'react';
-import GameGenerator from './MemoryChallenge';
+import GameGenerator from './GameGenerator';
 
 const App = ({ initialData }) => {
   return (
