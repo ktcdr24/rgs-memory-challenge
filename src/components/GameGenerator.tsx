@@ -2,23 +2,38 @@ import React, { FunctionComponent, useState } from 'react';
 import utils from 'utils';
 import GameSession from './GameSession';
 
-const GameGenerator: FunctionComponent = () => {
+const useGameId = () => {
   const [gameId, setGameId] = useState(1);
-  const rows = 6;
-  const cols = 6;
-  const challengeSize = 10;
-  const challengeSeconds = 3;
-  const maxWrongAttempts = 3;
-  const playSeconds = 10;
+
+  return {
+    gameId,
+    isNewGame: gameId === 1,
+    renewGame: () => setGameId((gameId) => gameId + 1),
+  };
+};
+
+interface GameGeneratorProps {
+  gridSize: number;
+  challengeSize: number;
+  challengeSeconds: number;
+  playSeconds: number;
+  maxWrongAttempts: number;
+}
+
+const GameGenerator: FunctionComponent = ({
+  gridSize,
+  challengeSize,
+  challengeSeconds,
+  playSeconds,
+  maxWrongAttempts,
+}) => {
+  const { gameId, isNewGame, renewGame } = useGameId();
+  const rows = gridSize;
+  const cols = gridSize;
 
   const cellIds = utils.createArray(rows * cols);
   const challengeCellIds = utils.sampleArray(cellIds, challengeSize).sort();
   const cellWidth = 100 / cols;
-
-  const startNewSession = () => {
-    console.log('Starting new game session');
-    setGameId((gameId) => gameId + 1);
-  };
 
   return (
     <GameSession
@@ -29,8 +44,8 @@ const GameGenerator: FunctionComponent = () => {
       playSeconds={playSeconds}
       challengeSeconds={challengeSeconds}
       maxWrongAttempts={maxWrongAttempts}
-      startNewSession={startNewSession}
-      shouldAutoStart={gameId > 1}
+      startNewSession={renewGame}
+      shouldAutoStart={!isNewGame}
     />
   );
 };

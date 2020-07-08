@@ -20,9 +20,6 @@ const GameSession: FunctionComponent = ({
   const [pickedCellIds, setPickedCellIds] = useState([]);
   const [countdownSeconds, setCountdownSeconds] = useState(playSeconds);
 
-  console.log('challengeCellIds', challengeCellIds);
-  console.log('pickedCellIds', pickedCellIds);
-
   useEffect(() => {
     if (gameStatus === GameStatus.CHALLENGE) {
       const timerId = setTimeout(

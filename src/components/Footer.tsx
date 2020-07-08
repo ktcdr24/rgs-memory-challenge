@@ -24,9 +24,7 @@ const Footer: FunctionComponent = ({
   };
   return (
     <>
-      <div className="message">
-        [{gameStatus}] {Messages[gameStatus]}
-      </div>
+      <div className="message">{Messages[gameStatus]}</div>
       <div className="button">{buttonAreaContent()}</div>
     </>
   );

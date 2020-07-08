@@ -29,7 +29,7 @@ const Cell: FunctionComponent = ({
         cellStatus = isChallenge ? CellStatus.CORRECT : CellStatus.WRONG;
       }
   }
-  // console.log('Cell', cellId, 'Status', cellStatus);
+
   return (
     <div
       className="cell"

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import GameGenerator from './GameGenerator';
 
-const App = ({ initialData }) => {
+const App: FunctionComponent = () => {
   return (
     <div>
-      <GameGenerator />
+      <GameGenerator
+        gridSize={5}
+        playSeconds={10}
+        challengeSize={6}
+        challengeSeconds={5}
+      />
     </div>
   );
 };
